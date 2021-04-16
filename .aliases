@@ -1,0 +1,27 @@
+# ssh
+alias shhgenerate="ssh-keygen -t rsa -b 4096 -C"
+
+# Git
+alias ga="git add"
+alias gaa="git add ."
+alias gc="git commit -m"
+alias gch="git checkout"
+alias gcb="git checkout -b"
+alias gp="git push"
+alias gs="git status"
+alias gl="git log"
+alias nah="git reset --hard;git clean -df;"
+alias gpl="git pull"
+alias gconfglobname="git config --global user.name"
+alias gconfglobemail="git config --global user.email"
+alias gconfglobpull="git confit --global pull.rebase true"
+
+# Laravel
+alias art="php artisan"
+alias tinker="php artisan tinker"
+alias p="vendor/bin/phpunit"
+alias pf="vendor/bin/phpunit --filter"
+
+#Android
+alias signdroid="keytool -genkey -v -keystore my-release-key.keystore -alias my-key-alias -keyalg RSA -keysize 2048 -validity 10000"
+
