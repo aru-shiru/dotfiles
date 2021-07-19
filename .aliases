@@ -29,3 +29,12 @@ alias signdroid="keytool -genkey -v -keystore my-release-key.keystore -alias my-
 alias firedl="gsutil -m cp -R"
 alias firexport="gcloud firestore export"
 
+# Workspace
+alias work="cd ~/code"
+alias pantau="cd ~/code/pantaurelawan"
+alias simpan="cd ~/code/simpan"
+alias simpanapp="cd ~/code/simpan_mobile"
+alias wakaf="cd ~/code/wakafyuk"
+alias wakafapp="cd ~/code/wakafyuk_mobile"
+alias pbas="cd ~/code/pbas-web"
+alias playground="cd ~/playground"
