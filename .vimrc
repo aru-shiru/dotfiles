@@ -4,9 +4,6 @@ let mapleader=','
 " turn on syntax highlighting
 syntax on
 
-" set the color theme
-colorscheme nord
-
 " show line number
 set number
 
@@ -103,4 +100,8 @@ Plug 'kien/ctrlp.vim'
 Plug 'tpope/vim-surround'
 
 call plug#end()
+
+
+" set the color theme
+colorscheme nord
 
