@@ -1,14 +1,3 @@
-"---------------Plugins---------------"
-call plug#begin(expand('~/.vim/plugged'))
-
-Plug 'arcticicestudio/nord-vim'
-Plug 'tpope/vim-vinegar'
-Plug 'preservim/nerdtree'
-Plug 'kien/ctrlp.vim'
-Plug 'tpope/vim-surround'
-
-call plug#end()
-
 " map <leader> to comma
 let mapleader=','
 
@@ -28,9 +17,6 @@ set splitright
 " always show what mode we're currently editing in
 set showmode
 
-" a tab is four spaces
-set tabstop=4
-
 " highlight search result
 set hlsearch
 
@@ -49,7 +35,7 @@ set formatoptions-=cro
 " set our desired autocomplete matching
 set complete=.,w,b,u
 
-" set tabstop
+" a tab is 4 spaces
 set tabstop=4
 
 " use spaces instead of tab
@@ -79,14 +65,8 @@ nmap <C-j> <C-w>j
 nmap <C-k> <C-w>k
 nmap <C-l> <C-w>l
 
-" toggle sidebar
-nmap <C-b> :NERDTreeToggle<cr>
-
 " close buffer
 nmap <leader>w :bd<CR>
-
-" go to tag
-nmap <C-r> :CtrlPBufTag<cr>
 
 " type jj in insert mode to switch to normal mode
 imap jj <Esc>
@@ -95,6 +75,32 @@ imap jj <Esc>
 
 
 
-"---------Plugin-Override---------"
-" NerdTree Override
+"---------Plugin-Configuration---------"
+">>> NERDTree <<<
+
+" use vinegar for file browsing
 let NERDTreeHijackNetrw = 0
+
+" toggle sidebar
+nmap <C-b> :NERDTreeToggle<cr>
+
+">>> CtrlP <<<
+
+" go to tag
+nmap <C-r> :CtrlPBufTag<cr>
+
+
+
+
+
+"---------------Plugins---------------"
+call plug#begin(expand('~/.vim/plugged'))
+
+Plug 'arcticicestudio/nord-vim'
+Plug 'tpope/vim-vinegar'
+Plug 'preservim/nerdtree'
+Plug 'kien/ctrlp.vim'
+Plug 'tpope/vim-surround'
+
+call plug#end()
+
