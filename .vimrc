@@ -97,4 +97,4 @@ imap jj <Esc>
 
 "---------Plugin-Override---------"
 " NerdTree Override
-let NERDTreeHijakNetrw = 0
+let NERDTreeHijackNetrw = 0
