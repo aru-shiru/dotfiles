@@ -25,6 +25,10 @@ alias pf="vendor/bin/phpunit --filter"
 # Android
 alias signdroid="keytool -genkey -v -keystore my-release-key.keystore -alias my-key-alias -keyalg RSA -keysize 2048 -validity 10000"
 
+# Firebase tools
+alias fireinstall="curl -sL https://firebase.tools | bash"
+alias fireupdate="curl -sL firebase.tools | upgrade=true bash"
+
 # GCP
 alias firedl="gsutil -m cp -R"
 alias firexport="gcloud firestore export"
