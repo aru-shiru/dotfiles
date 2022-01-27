@@ -86,6 +86,12 @@ nmap <C-b> :NERDTreeToggle<cr>
 " go to tag
 nmap <C-r> :CtrlPBufTag<cr>
 
+">>> Prettier <<<
+
+" auto format
+let g:prettier#autoformat = 1
+let g:prettier#autoformat_require_pragma = 0
+
 
 
 
@@ -98,6 +104,9 @@ Plug 'tpope/vim-vinegar'
 Plug 'preservim/nerdtree'
 Plug 'kien/ctrlp.vim'
 Plug 'tpope/vim-surround'
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'npm install --frozen-lockfile --production',
+  \ 'for': ['javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'css', 'less', 'scss', 'json', 'vue', 'svelte', 'yaml', 'html'] }
 
 call plug#end()
 
