@@ -81,11 +81,6 @@ let NERDTreeHijackNetrw = 0
 " toggle sidebar
 nmap <C-b> :NERDTreeToggle<cr>
 
-">>> CtrlP <<<
-
-" go to tag
-nmap <C-r> :CtrlPBufTag<cr>
-
 ">>> Prettier <<<
 
 " auto format
@@ -102,14 +97,12 @@ call plug#begin(expand('~/.vim/plugged'))
 Plug 'arcticicestudio/nord-vim'
 Plug 'tpope/vim-vinegar'
 Plug 'preservim/nerdtree'
-Plug 'kien/ctrlp.vim'
 Plug 'tpope/vim-surround'
 Plug 'prettier/vim-prettier', {
   \ 'do': 'npm install --frozen-lockfile --production',
   \ 'for': ['javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'css', 'less', 'scss', 'json', 'vue', 'svelte', 'yaml', 'html'] }
 
 call plug#end()
-
 
 " set the color theme
 colorscheme nord
