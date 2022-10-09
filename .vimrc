@@ -7,6 +7,9 @@ syntax on
 " show line number
 set number
 
+" use relative number
+set relativenumber
+
 " set default split placement
 set splitbelow
 set splitright
@@ -68,6 +71,9 @@ nmap <leader>w :bd<CR>
 " type jj in insert mode to switch to normal mode
 imap jj <Esc>
 
+" open finder
+nmap <C-P> :FZF<CR>
+
 
 
 
@@ -101,8 +107,14 @@ Plug 'tpope/vim-surround'
 Plug 'prettier/vim-prettier', {
   \ 'do': 'npm install --frozen-lockfile --production',
   \ 'for': ['javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'css', 'less', 'scss', 'json', 'vue', 'svelte', 'yaml', 'html'] }
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 call plug#end()
+
+" ignore node_modules when using fzf
+let $FZF_DEFAULT_COMMAND='find . \( -name node_modules -o -name .git \) -prune -o -print'
+
 
 " set the color theme
 colorscheme nord
