@@ -17,10 +17,15 @@ alias gconfglobemail="git config --global user.email"
 alias gconfglobpull="git confit --global pull.rebase true"
 
 # Laravel
-alias art="php artisan"
-alias tinker="php artisan tinker"
+alias laranew='curl -s "https://laravel.build/example-app" | bash'
+alias art="sail artisan"
+alias tinker="sail artisan tinker"
+alias migrate="sail artisan migrate"
+alias migratef="sail artisan migrate:fresh"
+alias js="sail npm run dev"
 alias p="vendor/bin/phpunit"
 alias pf="vendor/bin/phpunit --filter"
+alias sail="[ -f sail ] && sh sail || sh vendor/bin/sail"
 
 # Android
 alias signdroid="keytool -genkey -v -keystore my-release-key.keystore -alias my-key-alias -keyalg RSA -keysize 2048 -validity 10000"
@@ -28,6 +33,7 @@ alias signdroid="keytool -genkey -v -keystore my-release-key.keystore -alias my-
 # Firebase tools
 alias fireinstall="curl -sL https://firebase.tools | bash"
 alias fireupdate="curl -sL firebase.tools | upgrade=true bash"
+alias firestop="lsof -t -i:4000,5001,5050,8080,8085,9000,9001,9099,9199,9299 | xargs kill -9"
 
 # GCP
 alias firedl="gsutil -m cp -R"
@@ -35,10 +41,15 @@ alias firexport="gcloud firestore export"
 
 # Workspace
 alias work="cd ~/code"
-alias pantau="cd ~/code/pantaurelawan"
+alias pantau="cd ~/code/pantaurelawan-monorepo"
 alias simpan="cd ~/code/simpan"
 alias simpanapp="cd ~/code/simpan_mobile"
 alias wakaf="cd ~/code/wakafyuk"
 alias wakafapp="cd ~/code/wakafyuk_mobile"
-alias pbas="cd ~/code/pbas-web"
-alias playground="cd ~/playground"
+alias advansia="cd ~/code/advansia"
+alias absensi="cd ~/code/absensi-pegawai"
+alias lsi="cd ~/code/lingkaran-survei-indonesia"
+alias rama="cd ~/code/rahmatul-asri"
+
+# Utilty
+alias killport="lsof -t -i: | xargs kill -9"
