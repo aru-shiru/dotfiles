@@ -1,30 +1,33 @@
+-- [[ Setting options ]]
+-- See `:help vim.o`
+
 -- turn on syntax highlighting
-vim.opt.syntax = enable
+vim.o.syntax = 'on'
 
 -- show line number
-vim.opt.number = true
+vim.o.number = true
 
 -- use relative number
-vim.opt.relativenumber = true
+vim.o.relativenumber = true
 
 -- set default split placement
-vim.opt.splitbelow = true
-vim.opt.splitright = true
+vim.o.splitbelow = true
+vim.o.splitright = true
 
 -- always show what mode we're currently editing in
-vim.opt.showmode = true
+vim.o.showmode = true
 
 -- highlight search result
-vim.opt.hlsearch = true
+vim.o.hlsearch = false
 
 -- search as you type
-vim.opt.incsearch = true
+vim.o.incsearch = false
 
 -- disable annoying bell sound
 vim.cmd "set noerrorbells visualbell t_vb="
 
 -- automatically write file when switching
-vim.opt.autowriteall = true
+vim.o.autowriteall = true
 
 -- do not continue comment
 vim.cmd "set formatoptions-=cro"
@@ -33,13 +36,41 @@ vim.cmd "set formatoptions-=cro"
 vim.cmd "set complete=.,w,b,u"
 
 -- a tab is 4 spaces
-vim.opt.tabstop = 4
+vim.o.tabstop = 4
 
 -- use spaces instead of tab
-vim.opt.expandtab = true
+vim.o.expandtab = true
 
 -- use 4 spaces for tabs in insert mode
-vim.opt.softtabstop = 4
+vim.o.softtabstop = 4
 
 -- use 4 spaces for indentation in normal mode
-vim.opt.shiftwidth = 4
+vim.o.shiftwidth = 4
+
+-- Make line numbers default
+vim.wo.number = true
+
+-- Enable mouse mode
+vim.o.mouse = 'a'
+
+-- Enable break indent
+vim.o.breakindent = true
+
+-- Save undo history
+vim.o.undofile = true
+
+-- Case insensitive searching UNLESS /C or capital in search
+vim.o.ignorecase = true
+vim.o.smartcase = true
+
+-- Decrease update time
+vim.o.updatetime = 250
+vim.wo.signcolumn = 'yes'
+
+-- Set colorscheme
+vim.o.termguicolors = true
+vim.cmd[[colorscheme nord]]
+
+-- Set completeopt to have a better completion experience
+vim.o.completeopt = 'menuone,noselect'
+

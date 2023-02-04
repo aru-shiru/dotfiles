@@ -1,11 +1,13 @@
 local opts = { noremap = true, silent = true }
 
-local terminal_opts = { silent = true }
-
 -- Shorten function name
 local keymap = vim.api.nvim_set_keymap
 
+-- [[ Basic Keymaps ]]
+
 -- use comma as leader key
+-- See `:help mapleader`
+--  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
 keymap("", ",", "<Nop>", opts)
 vim.g.mapleader = ","
 vim.g.maplocalleader = ","
@@ -19,9 +21,6 @@ vim.g.maplocalleader = ","
 --   command_mode = "c",
 
 -- >>> NORMAL MODE <<<--
-
--- Remove search highlight
-keymap("n", "<leader><space>", ":nohlsearch<CR>", opts)
 
 -- easier window navigation
 keymap("n", "<C-h>", "<C-w>h", opts)
@@ -46,3 +45,22 @@ keymap("n", "<leader>w", ":bd<CR>", opts)
 
 -- type jj in insert mode to switch to normal mode
 keymap("i", "jj", "<ESC>", opts)
+
+-- Keymaps for better default experience
+-- See `:help vim.keymap.set()`
+vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
+
+-- Remap for dealing with word wrap
+vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+
+-- [[ Highlight on yank ]]
+-- See `:help vim.highlight.on_yank()`
+local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
+vim.api.nvim_create_autocmd('TextYankPost', {
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+  group = highlight_group,
+  pattern = '*',
+})
