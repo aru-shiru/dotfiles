@@ -1,6 +1,6 @@
-require "arushiru.plugins"
-require "arushiru.options"
-require "arushiru.keymaps"
+require 'arushiru.plugins'
+require 'arushiru.options'
+require 'arushiru.keymaps'
 
 -- Set lualine as statusline
 -- See `:help lualine.txt`
@@ -35,16 +35,26 @@ require('gitsigns').setup {
   },
 }
 
+-- DiffView
+-- See `:help diffview.txt`
+require('diffview').setup {
+  use_icons = false,
+}
+
+-- Surround
+require('nvim-surround').setup()
+
+
 -- [[ Configure Telescope ]]
 -- See `:help telescope` and `:help telescope.setup()`
 require('telescope').setup {
   defaults = {
-    selection_strategy = "reset",
-    sorting_strategy = "ascending",
-    layout_strategy = "horizontal",
+    selection_strategy = 'reset',
+    sorting_strategy = 'ascending',
+    layout_strategy = 'horizontal',
     layout_config = {
       horizontal = {
-        prompt_position = "top",
+        prompt_position = 'top',
         preview_width = 0.55,
         results_width = 0.8,
       },
@@ -248,6 +258,60 @@ mason_lspconfig.setup_handlers {
 
 -- Turn on lsp status information
 require('fidget').setup()
+
+-- Prettier auto-format setup
+local group = vim.api.nvim_create_augroup('lsp_format_on_save', { clear = false })
+local event = 'BufWritePre' -- or BufWritePost
+local async = event == 'BufWritePost'
+
+require('null-ls').setup({
+  on_attach = function(client, bufnr)
+    if client.supports_method('textDocument/formatting') then
+      vim.keymap.set('n', '<Leader>f', function()
+        vim.lsp.buf.format({ bufnr = vim.api.nvim_get_current_buf() })
+      end, { buffer = bufnr, desc = '[lsp] format' })
+
+      -- format on save
+      vim.api.nvim_clear_autocmds({ buffer = bufnr, group = group })
+      vim.api.nvim_create_autocmd(event, {
+        buffer = bufnr,
+        group = group,
+        callback = function()
+          vim.lsp.buf.format({ bufnr = bufnr, async = async })
+        end,
+        desc = '[lsp] format on save',
+      })
+    end
+
+    if client.supports_method('textDocument/rangeFormatting') then
+      vim.keymap.set('x', '<Leader>f', function()
+        vim.lsp.buf.format({ bufnr = vim.api.nvim_get_current_buf() })
+      end, { buffer = bufnr, desc = '[lsp] format' })
+    end
+  end,
+})
+
+require('prettier').setup({
+  bin = 'prettier', -- or `'prettierd'` (v0.22+)
+  filetypes = {
+    'css',
+    'graphql',
+    'html',
+    'javascript',
+    'javascriptreact',
+    'json',
+    'less',
+    'markdown',
+    'scss',
+    'typescript',
+    'typescriptreact',
+    'vue',
+    'yaml',
+  },
+  cli_options = {
+    embedded_language_formatting = 'auto',
+  },
+})
 
 -- nvim-cmp setup
 local cmp = require 'cmp'
