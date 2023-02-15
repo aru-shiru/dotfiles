@@ -44,6 +44,11 @@ require('diffview').setup {
 -- Surround
 require('nvim-surround').setup()
 
+-- File explorer
+require('nvim-tree').setup()
+
+vim.keymap.set('n', '<C-b>', require('nvim-tree').toggle, { desc = '[?] Find recently opened files' })
+
 
 -- [[ Configure Telescope ]]
 -- See `:help telescope` and `:help telescope.setup()`

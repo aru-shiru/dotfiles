@@ -1,6 +1,10 @@
 -- [[ Setting options ]]
 -- See `:help vim.o`
 
+-- disable netrw 
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 -- turn on syntax highlighting
 vim.o.syntax = 'on'
 
@@ -34,6 +38,9 @@ vim.cmd "set formatoptions-=cro"
 
 -- set our desired autocomplete matching
 vim.cmd "set complete=.,w,b,u"
+
+-- set line height
+vim.o.linespace = 3
 
 -- a tab is 4 spaces
 vim.o.tabstop = 4
