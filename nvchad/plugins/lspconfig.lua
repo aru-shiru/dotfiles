@@ -7,7 +7,10 @@ end
 local on_attach = require("plugins.configs.lspconfig").on_attach
 local capabilities = require("plugins.configs.lspconfig").capabilities
 
-local servers = { "tsserver" }
+local servers = {
+  "tsserver",
+  "dartls",
+}
 
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {

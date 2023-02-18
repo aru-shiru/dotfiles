@@ -7,7 +7,7 @@ M.mappings = require "custom.mappings"
 M.plugins = require "custom.plugins"
 
 M.ui = {
-  theme = "onedark",
+  theme = "nightfox",
 }
 
 return M

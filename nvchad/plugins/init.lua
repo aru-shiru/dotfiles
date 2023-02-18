@@ -1,6 +1,11 @@
 return {
+  -- disable terminal plugin
   ["NvChad/nvterm"] = false,
 
+  -- disable welcome screen plugin
+  ["goolord/alpha-nvim"] = false,
+
+  -- disable tab
   ["NvChad/ui"] = {
     override_options = {
       tabufline = {
@@ -22,6 +27,9 @@ return {
         "typescript-language-server",
         "emmet-ls",
         "json-lsp",
+
+        -- flutter dev
+        "dartls",
 
         -- shell
         "shfmt",
@@ -66,6 +74,13 @@ return {
     tag = "*",
     config = function()
       require "git-conflict".setup()
+    end,
+  },
+
+  ["akinsho/flutter-tools.nvim"] = {
+    requires = "nvim-lua/plenary.nvim",
+    config = function()
+      require "flutter-tools".setup()
     end,
   },
 }
