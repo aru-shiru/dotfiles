@@ -9,6 +9,7 @@ local capabilities = require("plugins.configs.lspconfig").capabilities
 
 local servers = {
   "tsserver",
+  "volar",
   "dartls",
 }
 

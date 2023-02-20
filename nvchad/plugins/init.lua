@@ -25,6 +25,7 @@ return {
         "css-lsp",
         "html-lsp",
         "typescript-language-server",
+        "vue-language-server",
         "emmet-ls",
         "json-lsp",
 
