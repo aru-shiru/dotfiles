@@ -28,6 +28,7 @@ return {
         "vue-language-server",
         "emmet-ls",
         "json-lsp",
+        "intelephense",
 
         -- flutter dev
         "dartls",

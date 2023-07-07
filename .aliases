@@ -12,9 +12,10 @@ alias gs="git status"
 alias gl="git log"
 alias nah="git reset --hard;git clean -df;"
 alias gpl="git pull"
-alias gconfglobname="git config --global user.name"
-alias gconfglobemail="git config --global user.email"
-alias gconfglobpull="git confit --global pull.rebase true"
+alias gdm="git branch --merged main | grep -v '^\* main' | xargs -n 1 -r git branch -d"
+alias gconfname="git config --global user.name"
+alias gconfemail="git config --global user.email"
+alias gconfpull="git confit --global pull.rebase true"
 
 # Laravel
 alias laranew='curl -s "https://laravel.build/example-app" | bash'
@@ -31,8 +32,6 @@ alias sail="[ -f sail ] && sh sail || sh vendor/bin/sail"
 alias signdroid="keytool -genkey -v -keystore my-release-key.keystore -alias my-key-alias -keyalg RSA -keysize 2048 -validity 10000"
 
 # Firebase tools
-alias fireinstall="curl -sL https://firebase.tools | bash"
-alias fireupdate="curl -sL firebase.tools | upgrade=true bash"
 alias firestop="lsof -t -i:4000,5001,5050,8080,8085,9000,9001,9099,9199,9299 | xargs kill -9"
 
 # GCP

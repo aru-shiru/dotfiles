@@ -11,6 +11,7 @@ local servers = {
   "tsserver",
   "volar",
   "dartls",
+  "intelephense",
 }
 
 for _, lsp in ipairs(servers) do
