@@ -1,107 +1,101 @@
--- Install packer
-local install_path = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
-local is_bootstrap = false
-if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-  is_bootstrap = true
-  vim.fn.system { 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path }
-  vim.cmd [[packadd packer.nvim]]
+-- Bootstrap Lazy
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable",
+    lazypath,
+  })
 end
+vim.opt.rtp:prepend(lazypath)
 
-require('packer').startup(function(use)
-  -- Package manager
-  use 'wbthomason/packer.nvim'
+require("lazy").setup({
+  -- Color scheme
+  { import = 'arushiru.plugins.tokyonight' },
+  { "shaunsingh/oxocarbon.nvim" },
+  { "ellisonleao/gruvbox.nvim" },
+  { "rose-pine/neovim", name = "rose-pine" },
 
-  use { -- LSP Configuration & Plugins
-    'neovim/nvim-lspconfig',
-    requires = {
-      -- Automatically install LSPs to stdpath for neovim
-      'williamboman/mason.nvim',
-      'williamboman/mason-lspconfig.nvim',
+  -- Commenting support.
+  { import = 'arushiru.plugins.vim-commentary' },
 
-      -- Useful status updates for LSP
-      'j-hui/fidget.nvim',
+  -- Add, change, and delete surrounding text.
+  { 'tpope/vim-surround' },
 
-      -- Additional lua configuration, makes nvim stuff amazing
-      'folke/neodev.nvim',
-    },
-  }
+  -- Useful commands like :Rename and :SudoWrite.
+  { 'tpope/vim-eunuch' },
 
-  use { -- Autocompletion
-    'hrsh7th/nvim-cmp',
-    requires = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
-  }
+  -- Pairs of handy bracket mappings, like [b and ]b.
+  { 'tpope/vim-unimpaired' },
 
-  use { -- Highlight, edit, and navigate code
-    'nvim-treesitter/nvim-treesitter',
-    run = function()
-      pcall(require('nvim-treesitter.install').update { with_sync = true })
-    end,
-  }
+  -- Indent autodetection with editorconfig support.
+  { 'tpope/vim-sleuth' },
 
-  use { -- Additional text objects via treesitter
-    'nvim-treesitter/nvim-treesitter-textobjects',
-    after = 'nvim-treesitter',
-  }
+  -- Allow plugins to enable repeating of commands.
+  { 'tpope/vim-repeat' },
 
-  use {
-    'kylechui/nvim-surround',
-    tag = '*', -- Use for stability; omit to use `main` branch for the latest features
-  }
+  -- Jump to the last location when opening a file.
+  { 'farmergreg/vim-lastplace' },
 
-  -- Git related plugins
-  use 'tpope/vim-fugitive'
-  use 'tpope/vim-rhubarb'
-  use 'lewis6991/gitsigns.nvim'
-  use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
+  -- Enable * searching with visually selected text.
+  { 'nelstrom/vim-visual-star-search' },
 
-  use 'shaunsingh/nord.nvim'
-  use 'nvim-lualine/lualine.nvim' -- Fancier statusline
-  use 'lukas-reineke/indent-blankline.nvim' -- Add indentation guides even on blank lines
-  use 'numToStr/Comment.nvim' -- "gc" to comment visual regions/lines
-  use 'tpope/vim-sleuth' -- Detect tabstop and shiftwidth automatically
+  -- Automatically create parent dirs when saving.
+  { 'jessarcher/vim-heritage' },
 
-  -- Fuzzy Finder (files, lsp, etc)
-  use { 'nvim-telescope/telescope.nvim', branch = '0.1.x', requires = { 'nvim-lua/plenary.nvim' } }
+  -- Text objects for HTML attributes.
+  { 'whatyouhide/vim-textobj-xmlattr', dependencies = 'kana/vim-textobj-user'  },
 
-  -- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
-  use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable 'make' == 1 }
+  -- Automatically set the working directory to the project root.
+  { import = 'arushiru.plugins.vim-rooter' },
 
-  -- File explorer
-  use 'nvim-tree/nvim-tree.lua'
+  -- Automatically add closing brackets, quotes, etc.
+  { 'windwp/nvim-autopairs', config = true },
 
-  -- Prettier
-  use 'jose-elias-alvarez/null-ls.nvim'
-  use 'MunifTanjim/prettier.nvim'
+  -- Add smooth scrolling to avoid jarring jumps
+  { 'karb94/neoscroll.nvim', config = true },
 
-  -- Add custom plugins to packer from ~/.config/nvim/lua/custom/plugins.lua
-  local has_plugins, plugins = pcall(require, 'custom.plugins')
-  if has_plugins then
-    plugins(use)
-  end
+  -- All closing buffers without closing the split window.
+  { import = 'arushiru.plugins.bufdelete' },
 
-  if is_bootstrap then
-    require('packer').sync()
-  end
-end)
+  -- Split arrays and methods onto multiple lines, or join them back up.
+  { import = 'arushiru.plugins.splitjoin' },
 
--- When we are bootstrapping a configuration, it doesn't
--- make sense to execute the rest of the init.lua.
---
--- You'll need to restart nvim, and then it will work.
-if is_bootstrap then
-  print '=================================='
-  print '    Plugins are being installed'
-  print '    Wait until Packer completes,'
-  print '       then restart nvim'
-  print '=================================='
-  return
-end
+  -- Automatically fix indentation when pasting code.
+  { import = 'arushiru.plugins.vim-pasta' },
 
--- Automatically source and re-compile packer whenever you save this init.lua
-local packer_group = vim.api.nvim_create_augroup('Packer', { clear = true })
-vim.api.nvim_create_autocmd('BufWritePost', {
-  command = 'source <afile> | silent! LspStop | silent! LspStart | PackerCompile',
-  group = packer_group,
-  pattern = vim.fn.expand '$MYVIMRC',
+  -- Fuzzy finder
+  { import = 'arushiru.plugins.telescope' },
+
+  -- File tree sidebar
+  { import = 'arushiru.plugins.nvim-tree' },
+
+  -- A Status line.
+  { import = 'arushiru.plugins.lualine' },
+
+  -- Git integration.
+  { import = 'arushiru.plugins.gitsigns' },
+
+  -- Git commands.
+  { 'tpope/vim-fugitive', dependencies = 'tpope/vim-rhubarb' },
+
+  -- Improved syntax highlighting
+  { import = 'arushiru.plugins.treesitter' },
+
+  -- Language Server Protocol.
+  { import = 'arushiru.plugins.lspconfig' },
+
+  -- Completion
+  { import = 'arushiru.plugins.cmp' },
+
+  -- Colorize Hex Codes
+  { import = 'arushiru.plugins.colorizer' },
+
+  -- Firebase
+  { 'delphinus/vim-firestore' }
 })
 
+vim.cmd('colorscheme rose-pine-main')

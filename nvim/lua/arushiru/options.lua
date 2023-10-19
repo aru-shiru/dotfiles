@@ -1,37 +1,36 @@
--- [[ Setting options ]]
--- See `:help vim.o`
+local opt = vim.opt
 
 -- disable netrw 
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
 -- turn on syntax highlighting
-vim.o.syntax = 'on'
+opt.syntax = 'on'
 
 -- show line number
-vim.o.number = true
+opt.number = true
 
 -- use relative number
-vim.o.relativenumber = true
+opt.relativenumber = true
 
 -- set default split placement
-vim.o.splitbelow = true
-vim.o.splitright = true
+opt.splitbelow = true
+opt.splitright = true
 
 -- always show what mode we're currently editing in
-vim.o.showmode = true
+opt.showmode = true
 
 -- highlight search result
-vim.o.hlsearch = false
+opt.hlsearch = false
 
 -- search as you type
-vim.o.incsearch = false
+opt.incsearch = false
+
+-- automatically write file when switching
+opt.autowriteall = true
 
 -- disable annoying bell sound
 vim.cmd "set noerrorbells visualbell t_vb="
-
--- automatically write file when switching
-vim.o.autowriteall = true
 
 -- do not continue comment
 vim.cmd "set formatoptions-=cro"
@@ -40,44 +39,79 @@ vim.cmd "set formatoptions-=cro"
 vim.cmd "set complete=.,w,b,u"
 
 -- set line height
-vim.o.linespace = 3
+opt.linespace = 3
 
 -- a tab is 4 spaces
-vim.o.tabstop = 4
+opt.tabstop = 4
 
 -- use spaces instead of tab
-vim.o.expandtab = true
+opt.expandtab = true
 
 -- use 4 spaces for tabs in insert mode
-vim.o.softtabstop = 4
+opt.softtabstop = 4
 
 -- use 4 spaces for indentation in normal mode
-vim.o.shiftwidth = 4
-
--- Make line numbers default
-vim.wo.number = true
+opt.shiftwidth = 4
 
 -- Enable mouse mode
-vim.o.mouse = 'a'
+opt.mouse = 'a'
 
 -- Enable break indent
-vim.o.breakindent = true
+opt.breakindent = true
 
 -- Save undo history
-vim.o.undofile = true
+opt.undofile = true
 
 -- Case insensitive searching UNLESS /C or capital in search
-vim.o.ignorecase = true
-vim.o.smartcase = true
+opt.ignorecase = true
+opt.smartcase = true
 
 -- Decrease update time
-vim.o.updatetime = 250
-vim.wo.signcolumn = 'yes'
+opt.updatetime = 250
+opt.signcolumn = 'yes'
 
 -- Set colorscheme
-vim.o.termguicolors = true
-vim.cmd[[colorscheme nord]]
+opt.termguicolors = true
 
 -- Set completeopt to have a better completion experience
-vim.o.completeopt = 'menuone,noselect'
+opt.completeopt = 'menuone,noselect'
 
+opt.smartindent = true
+
+-- Do not wrap the text
+opt.wrap = false
+
+-- complete the longest common match, and allow tabbing the results to fully complete them
+opt.wildmode = 'longest:full,full'
+
+opt.title = true
+
+-- enable the below listchars
+opt.list = true
+opt.listchars = { tab = '▸ ', trail = '.' }
+opt.fillchars:append({ eob = ' ' })
+
+-- create split below
+opt.splitbelow = true
+
+-- create split on right side for vertical split
+opt.splitright = true
+
+opt.scrolloff = 10
+
+opt.sidescrolloff = 8
+
+-- Use Linux system clipboard
+opt.clipboard = 'unnamedplus'
+
+-- ask for confirmation instead of erroring
+opt.confirm = true
+
+-- persistent undo
+opt.undofile = true
+
+-- automatically save a backup file
+opt.backup = true
+
+-- keep backups out of the current directory
+opt.backupdir:remove('.')
