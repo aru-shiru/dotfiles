@@ -1,13 +1,15 @@
--- First read our docs (completely) then check the example_config repo
-
+---@type ChadrcConfig
 local M = {}
 
-M.mappings = require "custom.mappings"
-
-M.plugins = require "custom.plugins"
-
-M.ui = {
-  theme = "nightfox",
+M.ui = { 
+  theme = 'catppuccin',
+  tabufline = {
+    enabled = false
+  },
 }
+
+M.plugins = "custom.plugins"
+
+M.mappings = require "custom.mappings"
 
 return M
