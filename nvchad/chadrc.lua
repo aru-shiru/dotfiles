@@ -2,7 +2,7 @@
 local M = {}
 
 M.ui = { 
-  theme = 'ashes',
+  theme = 'poimandres',
   tabufline = {
     enabled = false
   },

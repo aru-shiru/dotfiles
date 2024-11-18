@@ -14,6 +14,7 @@ M.treesitter = {
     "json",
     "vue",
     "php",
+    "go"
   },
 }
 
@@ -25,7 +26,7 @@ M.mason = {
 
     -- web dev stuff
     "css-lsp",
-    "emmet-lsp",
+    "emmet-ls",
     "html-lsp",
     "typescript-language-server",
     "vue-language-server",
@@ -33,8 +34,13 @@ M.mason = {
     "json-lsp",
     "deno",
     "prettier",
-    "intelephese",
-    "phpactor",
+    "eslint_d",
+    "intelephense",
+
+    -- golang
+    "gopls",
+    "golines",
+    "goimports"
   },
 }
 

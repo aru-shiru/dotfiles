@@ -11,7 +11,7 @@ lspconfig.intelephense.setup {
       end,
     },
   },
-  on_attach = function(client, bufnr)
+  on_attach = function(client, _)
     client.server_capabilities.documentFormattingProvider = false
     client.server_capabilities.documentRangeFormattingProvider = false
     -- if client.server_capabilities.inlayHintProvider then
@@ -21,36 +21,9 @@ lspconfig.intelephense.setup {
   capabilities = capabilities
 }
 
-lspconfig.phpactor.setup {
-  capabilities = capabilities,
-  on_attach = function(client, bufnr)
-    client.server_capabilities.completionProvider = false
-    client.server_capabilities.hoverProvider = false
-    client.server_capabilities.implementationProvider = false
-    client.server_capabilities.referencesProvider = false
-    client.server_capabilities.renameProvider = false
-    client.server_capabilities.selectionRangeProvider = false
-    client.server_capabilities.signatureHelpProvider = false
-    client.server_capabilities.typeDefinitionProvider = false
-    client.server_capabilities.workspaceSymbolProvider = false
-    client.server_capabilities.definitionProvider = false
-    client.server_capabilities.documentHighlightProvider = false
-    client.server_capabilities.documentSymbolProvider = false
-    client.server_capabilities.documentFormattingProvider = false
-    client.server_capabilities.documentRangeFormattingProvider = false
-  end,
-  init_options = {
-    ["language_server_phpstan.enabled"] = false,
-    ["language_server_psalm.enabled"] = false,
-  },
-  handlers = {
-    ['textDocument/publishDiagnostics'] = function() end
-  }
-}
-
 -- Vue, JavaScript, TypeScript
 lspconfig.volar.setup {
-  on_attach = function(client, bufnr)
+  on_attach = function(client, _)
     client.server_capabilities.documentFormattingProvider = false
     client.server_capabilities.documentRangeFormattingProvider = false
     -- if client.server_capabilities.inlayHintProvider then
@@ -63,9 +36,14 @@ lspconfig.volar.setup {
   filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
 }
 
+-- Deno
+lspconfig.denols.setup {
+  capabilities = capabilities
+}
+
 -- Tailwind CSS
-lspconfig.tailwindcss.setup { 
-  capabilities = capabilities 
+lspconfig.tailwindcss.setup {
+  capabilities = capabilities
 }
 
 -- JSON
@@ -76,4 +54,9 @@ lspconfig.jsonls.setup {
       schemas = require('schemastore').json.schemas(),
     },
   },
+}
+
+-- GOLANG
+lspconfig.gopls.setup {
+  capabilities = capabilities
 }
