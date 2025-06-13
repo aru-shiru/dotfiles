@@ -1,11 +1,14 @@
 [tools]
 bun = "latest"
-cocoapods = "latest"
 deno = "latest"
+ruby = "latest"
+cocoapods = "latest"
 elixir = "latest"
 erlang = "latest"
 go = "latest"
 java = "17"
 node = "20"
 python = "3.12"
-ruby = "latest"
+
+[settings]
+idiomatic_version_file_enable_tools = ["node"]
