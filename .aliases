@@ -1,5 +1,5 @@
 # ssh
-alias shhgenerate="ssh-keygen -t rsa -b 4096 -C"
+alias shhgenerate="ssh-keygen -t ed25519 -C "
 
 # Git
 alias ga="git add"
@@ -40,9 +40,8 @@ alias firedl="gsutil -m cp -R"
 alias firexport="gcloud firestore export"
 
 # Workspace
-alias play="cd ~/playground"
 alias work="cd ~/code"
-alias pantau="cd ~/code/pantaurelawan-monorepo"
+alias lamacca="cd ~/code/lamaccatech"
 alias simpan="cd ~/code/simpan"
 alias simpanapp="cd ~/code/simpan_mobile"
 alias wakaf="cd ~/code/wakafyuk"
@@ -53,3 +52,5 @@ alias wbn="cd ~/code/wakaf-bangun-negeri"
 alias killport="lsof -t -i: | xargs kill -9"
 alias elastic="docker run --name elasticsearch --net elastic -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" -t docker.elastic.co/elasticsearch/elasticsearch:7.15.2"
 alias kibana="docker run --name kibana --net elastic -p 5601:5601 docker.elastic.co/kibana/kibana:7.15.2"
+
+alias fmt="biome check --write --unsafe"
