@@ -1,3 +1,16 @@
+# Installation helper
+#
+# ensure we have build tools and c compiler installed
+# on ubuntu we can run `sudo apt install build-essential`
+#
+# Erlang and Elixir
+# refer to https://www.erlang.org/doc/system/install.html
+# to install `ncurses` on ubuntu run `sudo apt install libncurses5-dev libncursesw5-dev`
+#
+# Ruby
+# when facing error: zlib.h: no such file or directory upon installation run `sudo apt install libz-dev`
+#
+
 [tools]
 bun = "latest"
 deno = "latest"
