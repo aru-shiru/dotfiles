@@ -8,7 +8,7 @@
 # to install `ncurses` on ubuntu run `sudo apt install libncurses5-dev libncursesw5-dev`
 #
 # Ruby
-# when facing error: zlib.h: no such file or directory upon installation run `sudo apt install libz-dev`
+# to install required library on ubunt run `sudo apt install libz-dev libssl-dev libffi-dev libyaml-dev`
 #
 
 [tools]
