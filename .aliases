@@ -1,22 +1,9 @@
 # ssh
-alias shhgenerate="ssh-keygen -t ed25519 -C "
+alias sshgen="ssh-keygen -t ed25519 -C "
 
 # Git
-alias ga="git add"
-alias gaa="git add ."
-alias gc="git commit -m"
-alias gch="git checkout"
-alias gcb="git checkout -b"
-alias gb="bit branch"
-alias gp="git push"
-alias gs="git status"
-alias gl="git log"
 alias nah="git reset --hard;git clean -df;"
-alias gpl="git pull"
 alias gdm="git branch --merged main | grep -v '^\* main' | xargs -n 1 -r git branch -d"
-alias gconfname="git config --global user.name"
-alias gconfemail="git config --global user.email"
-alias gconfpull="git confit --global pull.rebase true"
 
 # Laravel
 alias laranew='curl -s "https://laravel.build/example-app" | bash'
@@ -39,18 +26,11 @@ alias firestop="lsof -t -i:4000,5001,5050,8080,8085,9000,9001,9099,9199,9299 | x
 alias firedl="gsutil -m cp -R"
 alias firexport="gcloud firestore export"
 
-# Workspace
-alias work="cd ~/code"
-alias lamacca="cd ~/code/lamaccatech"
-alias simpan="cd ~/code/simpan"
-alias simpanapp="cd ~/code/simpan_mobile"
-alias wakaf="cd ~/code/wakafyuk"
-alias wakafapp="cd ~/code/wakafyuk_mobile"
-alias wbn="cd ~/code/wakaf-bangun-negeri"
-
 # Utilty
 alias killport="lsof -t -i: | xargs kill -9"
+alias fmt="npx @biomejs/biome check --write --unsafe"
+alias reload="source $ZDOTDIR/.zshrc && echo 'Zsh config reloaded!'"
+
+# Elasticsearch
 alias elastic="docker run --name elasticsearch --net elastic -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" -t docker.elastic.co/elasticsearch/elasticsearch:7.15.2"
 alias kibana="docker run --name kibana --net elastic -p 5601:5601 docker.elastic.co/kibana/kibana:7.15.2"
-
-alias fmt="biome check --write --unsafe"
