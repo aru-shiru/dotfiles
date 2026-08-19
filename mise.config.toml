@@ -20,9 +20,14 @@ elixir = "latest"
 erlang = "latest"
 go = "latest"
 java = "latest"
-node = "24"
-python = "3.12"
+python = "3.14"
 rust = "latest"
+node = "latest"
+
+"npm:pnpm" = "latest"
+"npm:@fission-ai/openspec" = "latest"
+"npm:taze" = "latest"
+"npm:nx" = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = ["node"]
